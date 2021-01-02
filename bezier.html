@@ -85,6 +85,7 @@
 	// Evaluates and draws a given bezier curve with the specified number of samples
 	function drawBezier(points, samples) {
 		ctx.strokeStyle = "#000000";
+		ctx.lineWidth = 1;
 		ctx.beginPath();
 		var first = evalBezier(points, 0);
 		ctx.moveTo(first.re, first.im);
@@ -118,6 +119,10 @@
 	// Complete drawing routine
 	function draw() {
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
+		ctx.strokeStyle = "#000000";
+		ctx.lineWidth=2;
+
+		ctx.strokeRect(0, 0, canvas.width, canvas.height);
 		drawBezier(bezier, SAMPLES_PER_POINT * bezier.length);
 		drawControls(bezier);
 	}
@@ -187,4 +192,12 @@
 
 	draw();
 </script>
+<br>
 
+Controls:
+<ul>
+	<li>Left click to move</li>
+	<li>Middle click to remove</li>
+	<li>Right click to change weight (red vector)</li>
+</ul>
+Source at <a href="https://github.com/thesilvus/bezier">https://github.com/thesilvus/bezier</a>
